@@ -8,8 +8,6 @@ RegisterNetEvent('qb-carbomb:CheckVehicle', function()
     local veh = QBCore.Functions.GetClosestVehicle(pCoords)
     local vCoords = GetEntityCoords(veh)
     local dist = GetDistanceBetweenCoords(pCoords.x, pCoords.y, pCoords.z, vCoords.x, vCoords.y, vCoords.z, true)
-    local animDict = "anim@amb@business@weed@weed_inspecting_lo_med_hi@"
-    local anim = "weed_spraybottle_crouch_base_inspector"
 
     if not IsPedInAnyVehicle(ped, false) then
         if veh and (dist < 4.0) then
