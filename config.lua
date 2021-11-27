@@ -2,21 +2,31 @@ Config = {}
 
 Config.Item = 'ied'
 -- Detonation Types
--- 0 (Explode After Countdown)
--- 1 (Explode once the veh reaches a set speed)
--- 2 (Remote Detonate on Key Press)
--- 3 (Detonate after veh is entered and timer ends)
--- 4 (Detonate Immediately After the vehicle is entered)
+-- 1 (Explode After Countdown)
+-- 2 (Explode once the veh reaches a set speed)
+-- 3 (Remote Detonate on Key Press)
+-- 4 (Detonate after veh is entered and timer ends)
+-- 5 (Detonate Immediately After the vehicle is entered)
+Config.DetonationType = 1
 
 Config.Detonation = {
-    type = 1,
-    arming = 5,
-    detonation = math.random(3,10)
-    speed = 50
+    [1] = {
+        detonation = math.random(10, 20), -- can be math.random or a set amount
+    },
+    [2] = {
+        speed = 50 -- set a speed at which the vehicle will explode
+    },
+    [3] = {
+        key = 47, -- Key is G, change in the notification on line 41 of client
+    },
+    [4] = {
+        detonation = math.random(3,10), -- can be math random or a set amount
+    },
+    [5] = {
+        
+    },
 }
 
 Config.ArmingTime = math.random(5000, 10000)
-
-Config.TriggerKey = 47 -- If using type 2
 
 Config.Speed = 'MPH' -- if using type 2
