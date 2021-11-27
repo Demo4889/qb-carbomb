@@ -9,11 +9,14 @@ Config.Item = 'ied'
 -- 5 (Detonate Immediately After the vehicle is entered)
 Config.DetonationType = 1
 
+Config.TimeToArm = math.random(5000, 10000)
+
 Config.Detonation = {
     [1] = {
         detonation = math.random(10, 20), -- can be math.random or a set amount
     },
     [2] = {
+        display = "mph", -- set to mph or kmh
         speed = 50 -- set a speed at which the vehicle will explode
     },
     [3] = {
@@ -26,7 +29,3 @@ Config.Detonation = {
         
     },
 }
-
-Config.ArmingTime = math.random(5000, 10000)
-
-Config.Speed = 'MPH' -- if using type 2
