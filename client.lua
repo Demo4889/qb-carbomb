@@ -66,11 +66,11 @@ CreateThread(function()
                         local SpeedKMH = speed * 3.6
                         local SpeedMPH = speed * 2.236936
                         
-                        if Config.Speed == 'MPH' then
+                        if results.display == 'mph' then
                             if SpeedMPH >= results.speed then
                                 DetonateVehicle(armedVeh)
                             end
-                        elseif Config.Speed == 'KPH' then
+                        elseif results.display == 'kmh' then
                             if SpeedKMH >= results.speed then
                                 DetonateVehicle(armedVeh)
                             end
