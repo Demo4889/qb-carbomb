@@ -11,7 +11,7 @@ RegisterNetEvent('qb-carbomb:CheckVehicle', function()
 
     if not IsPedInAnyVehicle(ped, false) then
         if veh and (dist < 4.0) then
-            QBCore.Functions.Progressbar("carbomb_arming", "Arming Device...", Config.ArmingTime, false, true,{
+            QBCore.Functions.Progressbar("carbomb_arming", "Arming Device...", Config.TimeToArm, false, true,{
                 disableMovement = false,
                 disableCarMovement = false,
                 disableMouse = false,
@@ -109,6 +109,6 @@ function DetonateVehicle(veh)
     local vCoords = GetEntityCoords(veh)
     if DoesEntityExist(veh) then
         armedVeh = nil
-        AddExplosion(vCoords.x, vCoords.y, vCoords.z, 2, 50.0, true, false, true)
+        AddExplosion(vCoords.x, vCoords.y, vCoords.z, 5, 50.0, true, false, true)
     end
 end
