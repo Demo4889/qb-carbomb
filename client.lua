@@ -50,6 +50,56 @@ RegisterNetEvent('qb-carbomb:CheckVehicle', function()
     end
 end)
 
+RegisterNetEvent('qb-carbomb:disarmBomb', function()
+    local ped = PlayerPedId()
+    local pCoords = GetEntityCoords(ped)
+    local veh = QBCore.Functions.GetClosestVehicle(pCoords)
+    local vCoords = GetEntityCoords(veh)
+    local dist = GetDistanceBetweenCoords(pCoords.x, pCoords.y, pCoords.z, vCoords.x, vCoords.y, vCoords.z, true)
+
+    if dist < 2.0 and armedVeh then
+        QBCore.Functions.Progressbar("carbomb_disarm", "Disarming Device...", Config.TimeToArm, false, true,{
+            disableMovement = false,
+            disableCarMovement = false,
+            disableMouse = false,
+            disableCombat = true,
+        }, {
+            animDict = "anim@amb@business@weed@weed_inspecting_lo_med_hi@",
+            anim = "weed_spraybottle_crouch_base_inspector"
+        }, {}, {}, function()
+            ClearPedTasksImmediately(ped)
+            QBCore.Functions.Notify('You have disarmed the explosive...', 'success')
+            armedVeh = nil
+        end)
+    end
+end)
+
+RegisterNetEvent('qb-carbomb:inspectBomb', function()
+    local ped = PlayerPedId()
+    local pCoords = GetEntityCoords(ped)
+    local veh = QBCore.Functions.GetClosestVehicle(pCoords)
+    local vCoords = GetEntityCoords(veh)
+    local dist = GetDistanceBetweenCoords(pCoords.x, pCoords.y, pCoords.z, vCoords.x, vCoords.y, vCoords.z, true)
+
+    if dist < 2.0 then
+        QBCore.Functions.Progressbar("carbomb_inspect", "Inspecting Vehicle...", Config.TimeToArm, false, true,{
+            disableMovement = false,
+            disableCarMovement = false,
+            disableMouse = false,
+            disableCombat = true,
+        }, {
+            animDict = "anim@amb@business@weed@weed_inspecting_lo_med_hi@",
+            anim = "weed_spraybottle_crouch_base_inspector"
+        }, {}, {}, function()
+            if armedVeh then
+                QBCore.Functions.Notify('You have found an armed device on the vehicle...', 'success')
+            else
+                QBCore.Functions.Notify('You don\'t find a device on the vehicle...', 'success')
+            end
+            ClearPedTasks(ped)
+        end)
+    end
+end)
 
 CreateThread(function()
     while true do
@@ -109,6 +159,6 @@ function DetonateVehicle(veh)
     local vCoords = GetEntityCoords(veh)
     if DoesEntityExist(veh) then
         armedVeh = nil
-        AddExplosion(vCoords.x, vCoords.y, vCoords.z, 5, 50.0, true, false, true)
+        AddExplosion(vCoords.x, vCoords.y, vCoords.z, 5, 500.0, true, false, true)
     end
 end
