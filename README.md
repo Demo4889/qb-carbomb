@@ -10,3 +10,5 @@ Make sure you include the item into your qb-core/shared.lua file
 After you have included the item, restart your server and run it. Let me know if you have any issues.
 
 You can also used the ied.png file as your inventory image if you'd like. Or find one that suits the look you want
+
+The inspect and disarm commands can be set as job only commands by setting the configs to true, or false for everyone to use the commands
