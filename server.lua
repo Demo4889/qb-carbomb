@@ -17,10 +17,26 @@ end)
 
 QBCore.Commands.Add('disarm', 'Disarm a car bomb', {}, false, function(source)
     local Player = QBCore.Functions.GetPlayer(source)
-    TriggerClientEvent('qb-carbomb:disarmBomb', source)
+    if Config.JobDisarm then
+        if Player.PlayerData.job.name == Config.PoliceJob then
+            TriggerClientEvent('qb-carbomb:disarmBomb', source)
+        else
+            TriggerClientEvent('QBCore:Notify', source, 'You can\'t disarm a vehicle...', 'error')
+        end
+    else
+        TriggerClientEvent('qb-carbomb:disarmBomb', source)
+    end
 end)
 
 QBCore.Commands.Add('inspect', 'Inspect the vehicle for a bomb', {}, false, function(source)
     local Player = QBCore.Functions.GetPlayer(source)
-    TriggerClientEvent('qb-carbomb:inspectBomb', source)
+    if Config.JobInspect then
+        if Player.PlayerData.job.name == Config.PoliceJob then
+            TriggerClientEvent('qb-carbomb:inspectBomb', source)
+        else
+            TriggerClientEvent('QBCore:Notify', source, 'You can\'t inspect a vehicle...', 'error')
+        end
+    else
+        TriggerClientEvent('qb-carbomb:inspectBomb', source)
+    end
 end)

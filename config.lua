@@ -7,7 +7,12 @@ Config.Item = 'ied'
 -- 3 (Remote Detonate on Key Press)
 -- 4 (Detonate after veh is entered and timer ends)
 -- 5 (Detonate Immediately After the vehicle is entered)
-Config.DetonationType = 1
+Config.DetonationType = 3
+
+Config.PoliceJob = 'police'
+
+Config.JobDisarm = true -- True for police only to disarm/False for everyone to disarm
+Config.JobInspect = true -- True for police only to inspect/False for everyone to inspect
 
 Config.TimeToArm = math.random(5000, 10000)
 
