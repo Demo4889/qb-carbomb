@@ -41,6 +41,8 @@ RegisterNetEvent('qb-carbomb:CheckVehicle', function()
                 end
                 armedVeh = veh
                 TriggerServerEvent('qb-carbomb:RemoveBombFromInv')
+            end, function()
+                ClearPedTasks(ped)
             end)
         else
             QBCore.Functions.Notify("You are not near any vehicles", "error")
